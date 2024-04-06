@@ -41,7 +41,7 @@ closeButton.Parent = titleLabel
 
 -- Define script URLs for the first set of tools
 local scripts1 = {
-    ["B Gui"] = "https://raw.githubusercontent.com/shakar60/BGui/main/Script"
+    ["B Gui"] = "https://raw.githubusercontent.com/shakar60/BGui/main/Script",
     ["G Gui"] = "https://raw.githubusercontent.com/shakar60/GGui/main/Script",
     ["C Gui"] = "https://raw.githubusercontent.com/shakar60/CGui/main/Script",
     ["M Gui"] = "https://raw.githubusercontent.com/shakar60/MGui/main/Script",
