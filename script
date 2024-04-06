@@ -1,0 +1,122 @@
+-- Create the main ScreenGui
+local gui = Instance.new("ScreenGui")
+gui.Name = "MainGui"
+gui.Parent = game.Players.LocalPlayer.PlayerGui
+
+-- Create the main frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 200, 0, 200)
+mainFrame.Position = UDim2.new(0.5, -100, 0.5, -100)
+mainFrame.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+mainFrame.BorderSizePixel = 0
+mainFrame.Active = true
+mainFrame.Draggable = true
+mainFrame.Parent = gui
+
+-- Create the title label
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Name = "TitleLabel"
+titleLabel.Size = UDim2.new(1, 0, 0, 20)
+titleLabel.Position = UDim2.new(0, 0, 0, 0)
+titleLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+titleLabel.BorderSizePixel = 0
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.Text = "KeyStroke Guis"
+titleLabel.Font = Enum.Font.SourceSans
+titleLabel.TextSize = 16
+titleLabel.Parent = mainFrame
+
+-- Create the X button in the top right corner
+local closeButton = Instance.new("TextButton")
+closeButton.Name = "CloseButton"
+closeButton.Size = UDim2.new(0, 20, 0, 20)
+closeButton.Position = UDim2.new(1, -20, 0, 0)
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+closeButton.BorderSizePixel = 0
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.Text = "X"
+closeButton.Font = Enum.Font.SourceSans
+closeButton.TextSize = 14
+closeButton.Parent = titleLabel
+
+-- Define script URLs for the first set of tools
+local scripts1 = {
+    ["G Gui"] = "https://raw.githubusercontent.com/shakar60/GGui/main/Tool",
+    ["C Gui"] = "https://raw.githubusercontent.com/shakar60/CGui/main/Tool",
+    ["M Gui"] = "https://raw.githubusercontent.com/shakar60/MGui/main/Tool",
+    ["N Gui"] = "https://raw.githubusercontent.com/shakar60/NGui/main/Tool",
+    ["B Gui"] = "https://raw.githubusercontent.com/shakar60/B/main/Tool",
+}
+
+-- Define script URLs for the second set of tools
+local scripts2 = {
+    ["Q Gui"] = "https://raw.githubusercontent.com/shakar60/QGui/main/Tool",
+    ["F Gui"] = "https://raw.githubusercontent.com/shakar60/FGui/main/Tool",
+    ["X Gui"] = "https://raw.githubusercontent.com/shakar60/XGui/main/Tool",
+    ["Z Gui"] = "https://raw.githubusercontent.com/shakar60/ZGui/main/Tool",
+    ["T Gui"] = "https://raw.githubusercontent.com/shakar60/TGui/main/Tool",
+}
+
+-- Create a frame to hold the buttons as a slider
+local buttonFrame = Instance.new("Frame")
+buttonFrame.Name = "ButtonFrame"
+buttonFrame.Size = UDim2.new(1, 0, 1, -20)
+buttonFrame.Position = UDim2.new(0, 0, 0, 20)
+buttonFrame.BackgroundTransparency = 1
+buttonFrame.Parent = mainFrame
+
+-- Function to toggle between sets of tools
+local toggle = false
+local function ToggleTools()
+    toggle = not toggle
+    buttonFrame:ClearAllChildren() -- Clear existing buttons
+    local scripts = toggle and scripts2 or scripts1 -- Select which set of tools to display
+    local yOffset = 5
+    for name, url in pairs(scripts) do
+        local button = Instance.new("TextButton")
+        button.Name = name .. "Button"
+        button.Size = UDim2.new(1, -10, 0, 30)
+        button.Position = UDim2.new(0, 5, 0, yOffset)
+        button.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+        button.BorderSizePixel = 0
+        button.TextColor3 = Color3.fromRGB(255, 255, 255)
+        button.Text = name
+        button.Font = Enum.Font.SourceSans
+        button.TextSize = 14
+        button.Parent = buttonFrame
+
+        button.MouseButton1Click:Connect(function()
+            loadstring(game:HttpGet(url, true))()
+            print("Script Executed: " .. name)
+        end)
+
+        yOffset = yOffset + 35
+    end
+end
+
+-- Create the ">" button in the left corner
+local toggleButton = Instance.new("TextButton")
+toggleButton.Name = "ToggleButton"
+toggleButton.Size = UDim2.new(0, 20, 0, 20)
+toggleButton.Position = UDim2.new(0, 0, 0, 0)
+toggleButton.BackgroundColor3 = Color3.fromRGB(50, 150, 255)
+toggleButton.BorderSizePixel = 0
+toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+toggleButton.Text = ">"
+toggleButton.Font = Enum.Font.SourceSans
+toggleButton.TextSize = 14
+toggleButton.Parent = mainFrame
+
+-- Function to handle toggle button click
+toggleButton.MouseButton1Click:Connect(function()
+    ToggleTools()
+    toggleButton.Text = toggle and "<" or ">"
+end)
+
+-- Create the X button click event to close the GUI
+closeButton.MouseButton1Click:Connect(function()
+    gui:Destroy()
+end)
+
+-- Initial display of tools
+ToggleTools()
