@@ -41,20 +41,20 @@ closeButton.Parent = titleLabel
 
 -- Define script URLs for the first set of tools
 local scripts1 = {
-    ["G Gui"] = "https://raw.githubusercontent.com/shakar60/GGui/main/Tool",
-    ["C Gui"] = "https://raw.githubusercontent.com/shakar60/CGui/main/Tool",
-    ["M Gui"] = "https://raw.githubusercontent.com/shakar60/MGui/main/Tool",
-    ["N Gui"] = "https://raw.githubusercontent.com/shakar60/NGui/main/Tool",
-    ["B Gui"] = "https://raw.githubusercontent.com/shakar60/B/main/Tool",
+    ["G Gui"] = "https://raw.githubusercontent.com/shakar60/GGui/main/Script",
+    ["C Gui"] = "https://raw.githubusercontent.com/shakar60/CGui/main/Script",
+    ["M Gui"] = "https://raw.githubusercontent.com/shakar60/MGui/main/Script",
+    ["N Gui"] = "https://raw.githubusercontent.com/shakar60/NGui/main/Script",
+    ["B Gui"] = "https://raw.githubusercontent.com/shakar60/BGui/main/Script",
 }
 
 -- Define script URLs for the second set of tools
 local scripts2 = {
-    ["Q Gui"] = "https://raw.githubusercontent.com/shakar60/QGui/main/Tool",
-    ["F Gui"] = "https://raw.githubusercontent.com/shakar60/FGui/main/Tool",
-    ["X Gui"] = "https://raw.githubusercontent.com/shakar60/XGui/main/Tool",
-    ["Z Gui"] = "https://raw.githubusercontent.com/shakar60/ZGui/main/Tool",
-    ["T Gui"] = "https://raw.githubusercontent.com/shakar60/TGui/main/Tool",
+    ["Q Gui"] = "https://raw.githubusercontent.com/shakar60/QGui/main/Script",
+    ["F Gui"] = "https://raw.githubusercontent.com/shakar60/FGui/main/Script",
+    ["X Gui"] = "https://raw.githubusercontent.com/shakar60/XGui/main/Script",
+    ["Z Gui"] = "https://raw.githubusercontent.com/shakar60/ZGui/main/Script",
+    ["T Gui"] = "https://raw.githubusercontent.com/shakar60/TGui/main/Script",
 }
 
 -- Create a frame to hold the buttons as a slider
